@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttag.product.mapper.ProductsMapper">
+    <select id="selectProductListVague" resultType="com.ttag.product.domain.vo.QuerryProductVO">
+        SELECT `id`,`name`,`price`,`stock`,`image`,`description`,`score`,`status`,`ship_address` FROM products
+        WHERE `status`="accept" AND MATCH(name) AGAINST(#{context} IN BOOLEAN MODE)
+        ORDER BY id DESC
+        LIMIT #{current}, 12
+    </select>
+
+    <select id="selectProductList" resultType="com.ttag.product.domain.vo.QuerryProductVO">
+        SELECT `id`,`name`,`price`,`stock`,`image`,`description`,`score`,`status`,`ship_address`FROM products
+        WHERE `status`="accept"
+        ORDER BY id DESC
+        LIMIT #{current}, 12
+    </select>
+</mapper>

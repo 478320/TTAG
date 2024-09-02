@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.126.128:8848
+      config:
+        file-extension: yaml # 配置文件的格式，这里使用yaml
+        shared-configs:
+          - data-id: ttag-shard-jdbc.yaml
+          - data-id: ttag-shared-redis.properties
+

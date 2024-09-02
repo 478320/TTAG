@@ -1,0 +1,8 @@
+server:
+  port: 8082
+ttag:
+    db:
+      database: ttag-user
+feign:
+  okhttp:
+    enabled: true

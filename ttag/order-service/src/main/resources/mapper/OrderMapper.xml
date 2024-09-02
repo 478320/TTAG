@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttag.order.mapper.OrderMapper">
+    <select id="listMyOrderPending" resultType="com.ttag.order.domain.vo.ListOrderVO">
+        SELECT o.id ,o.create_at, o.status,o.total_price,od.item_id,od.price,od.name,od.image,od.num
+        FROM tb_order o
+        LEFT JOIN tb_order_detail od ON o.id = od.order_id
+        where o.user_id=#{userId} AND o.status = 'pending'
+        ORDER BY create_at desc
+        LIMIT #{current}, 4
+    </select>
+
+    <select id="listMyOrderOther" resultType="com.ttag.order.domain.vo.ListOrderVO">
+        SELECT o.id ,o.create_at, o.status,o.total_price,od.item_id,od.price,od.name,od.image,od.num
+        FROM tb_order o
+                 LEFT JOIN tb_order_detail od ON o.id = od.order_id
+        where o.user_id=#{userId} AND o.status != 'pending'
+        ORDER BY create_at desc
+        LIMIT #{current}, 4
+    </select>
+
+    <select id="getOrderById" resultType="com.ttag.order.domain.vo.GetOrderVO">
+        SELECT o.id ,o.total_price,od.price,od.name,od.image
+        FROM tb_order o
+                 LEFT JOIN tb_order_detail od ON o.id = od.order_id
+        where o.user_id=#{userId} AND o.id=#{orderId}
+    </select>
+
+    <select id="getPayOrder" resultType="com.ttag.order.domain.dto.PayOrderDTO">
+        SELECT o.user_id , o.total_price, o.status,od.item_id,od.num
+        FROM tb_order o
+                 LEFT JOIN tb_order_detail od ON o.id = od.order_id
+        where o.id=#{orderId}
+    </select>
+</mapper>

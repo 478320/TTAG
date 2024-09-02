@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: upload-service
+  cloud:
+    nacos:
+      server-addr: 47.121.128.102:8848
+      username: nacos
+      password: Yusiheng666nacos

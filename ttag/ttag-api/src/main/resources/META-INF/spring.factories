@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ttag.api.config.MvcConfig,\
+  com.ttag.api.config.DefaultFeignConfig

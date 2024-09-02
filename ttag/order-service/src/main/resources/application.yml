@@ -1,0 +1,8 @@
+server:
+  port: 8084
+feign:
+  okhttp:
+    enabled: true
+ttag:
+  db:
+    database: ttag-order

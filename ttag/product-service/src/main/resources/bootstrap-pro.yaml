@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: product-service
+  cloud:
+    nacos:
+      server-addr: 47.121.128.102:8848
+      username: nacos
+      password: Yusiheng666nacos
+      config:
+        server-addr: 47.121.128.102:8848 # Nacos配置中心地址
+        username: nacos
+        password: Yusiheng666nacos
+        file-extension: yaml # 配置文件的格式，这里使用yaml
+        shared-configs:
+          - data-id: ttag-shared-jdbc.yaml
+          - data-id: ttag-shared-redis.properties
+          - data-id: ttag-shared-seata.yaml
+          - data-id: ttag-shared-rabbitmq.yaml
+        config-long-poll-timeout: 5000
+
